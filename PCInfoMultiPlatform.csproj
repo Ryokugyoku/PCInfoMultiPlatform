@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>PCInfoMultiPlatform</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Ryokugyoku</Authors>
+    <Description>Multiplatform PC information library</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
