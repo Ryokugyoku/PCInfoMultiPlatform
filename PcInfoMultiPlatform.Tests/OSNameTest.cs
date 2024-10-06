@@ -1,11 +1,12 @@
 namespace PcInfoMultiPlatform.Tests;
 using System.Runtime.InteropServices;
+using PcInfoMultiPlatform; // 追加
 
 public class OSNameTest
 {
     readonly private string _osName;
 
-    private PcInfoMultiPlatform _pcInfoMultiPlatform;
+    private PCInfoMultiPlatform _pcInfoMultiPlatform;
 
     /// <summary>
     /// OS名を設定するためのコンストラクタ
@@ -28,7 +29,7 @@ public class OSNameTest
         {
             _osName = "Unknown";
         }
-        _pcInfoMultiPlatform = new PcInfoMultiPlatform();
+        _pcInfoMultiPlatform = new PCInfoMultiPlatform();
     }
     /// <summary>
     /// OS名称/バージョンの取得テスト

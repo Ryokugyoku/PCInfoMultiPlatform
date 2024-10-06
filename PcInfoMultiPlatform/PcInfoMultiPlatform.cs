@@ -13,7 +13,7 @@ namespace PcInfoMultiPlatform;
 /// </code>
 /// </Example>
 /// </summary>
-public class PcInfoMultiPlatform
+public class PCInfoMultiPlatform
 {
     private string _osName;
     private string _osVersion;
@@ -34,7 +34,7 @@ public class PcInfoMultiPlatform
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    public PcInfoMultiPlatform()
+    public PCInfoMultiPlatform()
     {
         _osName = OsInfo.GetOSName();
         _osVersion = OsInfo.GetOSVersion();
