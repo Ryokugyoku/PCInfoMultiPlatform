@@ -98,7 +98,7 @@ internal class OsInfo{
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = "uname",
+                FileName = "sw_vers",
                 Arguments = "-r",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
