@@ -7,7 +7,6 @@ namespace PcInfoMultiPlatform.src;
 /// OS情報を取得するための機関クラス
 /// </summary>
 internal class OsInfo{
-    
     /// <summary>
     /// OS名の取得
     /// </summary>
@@ -66,7 +65,7 @@ internal class OsInfo{
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = "sw_vers",
+                FileName = "/usr/bin/sw_vers",
                 Arguments = "-productVersion",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
@@ -98,7 +97,7 @@ internal class OsInfo{
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = "uname",
+                FileName = "/bin/uname",
                 Arguments = "-r",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
