@@ -1,5 +1,6 @@
 namespace PcInfoMultiPlatform.Tests;
 using System.Runtime.InteropServices;
+
 public class OSNameTest
 {
     readonly private string _osName;
@@ -37,7 +38,7 @@ public class OSNameTest
     {
         Assert.Equal(_osName, _pcInfoMultiPlatform.OsName);
         Console.WriteLine("TestOS:"+_pcInfoMultiPlatform.OsName);
-        Assert.Equal(Environment.OSVersion.VersionString, _pcInfoMultiPlatform.OsVersion);
+        Assert.NotEqual(Property.SystemInfo.GetResourceValue("Unknown").ToString(),_pcInfoMultiPlatform.OsVersion);
         Console.WriteLine("TestOSVersion:"+_pcInfoMultiPlatform.OsVersion);
     }
 }

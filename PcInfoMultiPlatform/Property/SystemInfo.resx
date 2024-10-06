@@ -121,4 +121,8 @@
     <value>/System/Library/CoreServices/SystemVersion.plist </value>
     <comment/>
   </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+    <comment>識別不明</comment>
+  </data>
 </root>
