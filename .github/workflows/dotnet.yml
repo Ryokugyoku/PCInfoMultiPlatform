@@ -32,6 +32,6 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
-        dotnet sonarscanner begin /k:"<YourProjectKey>" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="<YourSonarQubeServerURL>"
+        dotnet sonarscanner begin /k:"Ryokugyoku_PCInfoMultiPlatform" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
         dotnet build
         dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
