@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
-    <ProjectReference Include="..\PCInfoMultiPlatform\PCInfoMultiPlatform.csproj" />
+  </ItemGroup>
+    <ItemGroup>
+    <ProjectReference Include="..\PcInfoMultiPlatform\PcInfoMultiPlatform.csproj" />
   </ItemGroup>
 </Project>
