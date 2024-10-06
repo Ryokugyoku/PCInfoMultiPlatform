@@ -1,0 +1,47 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'csharp' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Autobuild
+      run: |
+        if [[ "${{ matrix.language }}" == "javascript" ]]; then
+          npm install
+        elif [[ "${{ matrix.language }}" == "python" ]]; then
+          pip install -r requirements.txt
+        elif [[ "${{ matrix.language }}" == "go" ]]; then
+          go build ./...
+        elif [[ "${{ matrix.language }}" == "java" ]]; then
+          mvn install
+        elif [[ "${{ matrix.language }}" == "csharp" ]]; then
+          dotnet build
+        fi
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
