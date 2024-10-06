@@ -78,6 +78,7 @@ internal class OsInfo{
         return version;
     }
 
+
     /// <summary>
     /// Windowsのバージョンを取得
     /// </summary>
