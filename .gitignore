@@ -1,2 +1,4 @@
-/bin
-/obj
+/PcInfoMultiPlatform/obj
+/PcInfoMultiPlatform/bin
+/PcInfoMultiPlatform.Tests/obj
+/PcInfoMultiPlatform.Tests/bin

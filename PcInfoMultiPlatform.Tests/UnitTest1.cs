@@ -1,4 +1,4 @@
-﻿namespace PCInfoMultiPatform.Tests;
+namespace PcInfoMultiPlatform.Tests;
 
 public class UnitTest1
 {
