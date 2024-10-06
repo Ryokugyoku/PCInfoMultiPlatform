@@ -28,6 +28,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
       
+    - name: Add .NET tools to PATH
+      run: echo "::add-path::$(dotnet tool list -g | grep dotnet-sonarscanner | awk '{print $3}')"
     - name: Run SonarQube analysis
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
