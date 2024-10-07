@@ -39,7 +39,7 @@ public class OSNameTest
     {
         Assert.Equal(_osName, _pcInfoMultiPlatform.OsInfo.OsName);
         Console.WriteLine("TestOS:"+_pcInfoMultiPlatform.OsInfo.OsName);
-        Assert.NotEqual(Property.SystemInfo.GetResourceValue("Unknown").ToString(),_pcInfoMultiPlatform.OsVersion);
+        Assert.NotEqual(Property.SystemInfo.GetResourceValue("Unknown").ToString(),_pcInfoMultiPlatform.OsInfo.OsVersion);
         Console.WriteLine("TestOSVersion:"+_pcInfoMultiPlatform.OsInfo.OsVersion);
     }
 }
