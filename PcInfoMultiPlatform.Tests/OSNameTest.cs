@@ -37,9 +37,9 @@ public class OSNameTest
     [Fact]
     public void GetNameWindows()
     {
-        Assert.Equal(_osName, _pcInfoMultiPlatform.OsName);
-        Console.WriteLine("TestOS:"+_pcInfoMultiPlatform.OsName);
+        Assert.Equal(_osName, _pcInfoMultiPlatform.OsInfo.OsName);
+        Console.WriteLine("TestOS:"+_pcInfoMultiPlatform.OsInfo.OsName);
         Assert.NotEqual(Property.SystemInfo.GetResourceValue("Unknown").ToString(),_pcInfoMultiPlatform.OsVersion);
-        Console.WriteLine("TestOSVersion:"+_pcInfoMultiPlatform.OsVersion);
+        Console.WriteLine("TestOSVersion:"+_pcInfoMultiPlatform.OsInfo.OsVersion);
     }
 }
