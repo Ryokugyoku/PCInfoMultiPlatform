@@ -16,6 +16,4 @@
  - Windows
  - MacOs
  - Linuc
- - Android （予定）
- - IOs （予定）
 

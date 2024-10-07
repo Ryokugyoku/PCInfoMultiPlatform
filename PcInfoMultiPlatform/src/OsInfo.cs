@@ -6,12 +6,22 @@ namespace PcInfoMultiPlatform.src;
 /// <summary>
 /// OS情報を取得するための機関クラス
 /// </summary>
-internal class OsInfo{
+public class OsInfo{
+
+    public string OsName { get; private set; }
+    public string OsVersion { get; private set; }
+
+    public OsInfo()
+    {
+        OsName = GetOSName();
+        OsVersion = GetOSVersion();
+    }
+
     /// <summary>
     /// OS名の取得
     /// </summary>
     /// <returns></returns>
-    public static string GetOSName()
+    private string GetOSName()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
@@ -35,7 +45,7 @@ internal class OsInfo{
     /// OSバージョンの取得
     /// </summary>
     /// <returns></returns>
-    public static string GetOSVersion()
+    private string GetOSVersion()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
@@ -59,7 +69,7 @@ internal class OsInfo{
     /// macOSのバージョンを取得
     /// </summary>
     /// <returns></returns>
-    private static string GetOSXVersion()
+    private string GetOSXVersion()
     {
         var p = new Process
         {
@@ -83,7 +93,7 @@ internal class OsInfo{
     /// Windowsのバージョンを取得
     /// </summary>
     /// <returns></returns>
-    private static string GetWindowsVersion()
+    private string GetWindowsVersion()
     {
         return Environment.OSVersion.VersionString;
     }
@@ -92,7 +102,7 @@ internal class OsInfo{
     /// Linuxのバージョンを取得
     /// </summary>
     /// <returns>Linux Version</returns>
-    private static string GetLinuxVersion()
+    private string GetLinuxVersion()
     {
         var p = new Process
         {
