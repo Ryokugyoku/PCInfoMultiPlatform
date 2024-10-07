@@ -5,8 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <NoWarn>CA1416</NoWarn>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Property/SystemInfo.resx"/>
+    <EmbeddedResource Include="Property/SystemInfo.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="8.0.0" />
   </ItemGroup>
 </Project>
