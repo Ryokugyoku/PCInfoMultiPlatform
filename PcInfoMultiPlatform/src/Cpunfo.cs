@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Management;
 using System.Runtime.InteropServices;
 using PcInfoMultiPlatform.src.Object;
 
@@ -10,9 +8,9 @@ public class CpuInfo{
     /// </summary>
     public CpuData CpuData { get; private set; }
     
-    public CpuInfo()
+    public CpuInfo(OSPlatform os)
     {
-        CpuData = new CpuData();
+        CpuData = new CpuData(os);
     }
 
 

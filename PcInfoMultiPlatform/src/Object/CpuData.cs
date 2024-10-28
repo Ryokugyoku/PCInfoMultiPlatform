@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using System.Management;
 using System.Runtime.InteropServices;
+using Microsoft.VisualBasic;
+using PcInfoMultiPlatform.src.ThreadsTransaction;
 
 namespace PcInfoMultiPlatform.src.Object;
 
@@ -29,33 +31,50 @@ public class CpuData
     public int PhysicalCores { get; private set; }
     public int LogicalCores { get; private set; }
     public int AvgFrequency { get; protected set; }
-    public int CpuPower { get; protected set; }
-    public int InternalGpuPower { get; protected set; }
-    public int ANEPower { get; protected set; }
-    public List<Core> Cores { get; protected set; } = new();
-    public Core GpuCore { get; protected set; } = new Core();
+    public int CpuPower { get;  set; }
+    public int InternalGpuPower { get; set; }
+    public int ANEPower { get; set; }
+    public List<Core> Cores { get; set; } = new();
+    public Core GpuCore { get; set; } = new Core();
 
-    public CpuData()
+    public CpuTransaction CpuTransaction;
+
+    public CpuData(OSPlatform os)
     {
-        SetCpuInfo();
+        SetCpuInfo(os);
+        CpuTransaction = new CpuTransaction(this,os);
     }
 
-    private void SetCpuInfo()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="os"></param>
+    /// <param name="interval">更新感覚：ミリ秒</param>
+    public CpuData(OSPlatform os, int interval)
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        SetCpuInfo(os);
+        CpuTransaction = new CpuTransaction(this,os,interval);
+    }
+
+    private void SetCpuInfo(OSPlatform os)
+    {
+        switch(os)
         {
-            GetCpuInfoMacOS();
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            GetCpuInfoWindows();
-        }
-        else
-        {
-            GetCpuInfoLinux();
+            case var ostype when ostype == OSPlatform.OSX:
+                GetCpuInfoMacOS();
+                break;
+            case var ostype when ostype == OSPlatform.Windows:
+                GetCpuInfoWindows();
+                break;
+            case var ostype when ostype == OSPlatform.Linux:
+                GetCpuInfoLinux();
+                break;
         }
     }
 
+    /// <summary>
+    /// MacOSのCPU基本情報を取得
+    /// </summary>
     private void GetCpuInfoMacOS()
     {
         var sysctlCommands = new Dictionary<string, Action<string>>
@@ -75,6 +94,11 @@ public class CpuData
         }
     }
 
+    /// <summary>
+    /// Execute sysctl command
+    /// </summary>
+    /// <param name="argument"></param>
+    /// <returns></returns>
     private string ExecuteSysctlCommand(string argument)
     {
         try

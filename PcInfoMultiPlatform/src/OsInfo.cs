@@ -8,11 +8,18 @@ namespace PcInfoMultiPlatform.src;
 /// </summary>
 public class OsInfo{
 
-    public string OsName { get; private set; }
-    public string OsVersion { get; private set; }
+    public string OsName { get; private set; } = String.Empty;
+    public string OsVersion { get; private set; } = String.Empty;
 
-    public OsInfo()
+    public OSPlatform Os { get; private set; }
+    private OsInfo()
     {
+        Os = OSPlatform.Windows;
+    }
+
+    public OsInfo(OSPlatform os)
+    {
+        Os = os;
         OsName = GetOSName();
         OsVersion = GetOSVersion();
     }
@@ -23,21 +30,16 @@ public class OsInfo{
     /// <returns></returns>
     private string GetOSName()
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        switch (Os)
         {
-            return "macOS";
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            return "Windows";
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-        {
-            return "Linux";
-        }
-        else
-        {
-            return "Unknown";
+                case var os when os == OSPlatform.OSX:
+                    return "macOS";
+                case var os when os == OSPlatform.Windows:
+                    return "Windows";
+                case var os when os == OSPlatform.Linux:
+                    return "Linux";
+                default:
+                    return "Unknown";
         }
     }
 
@@ -47,21 +49,16 @@ public class OsInfo{
     /// <returns></returns>
     private string GetOSVersion()
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        switch(Os)
         {
-            return GetOSXVersion();
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            return GetWindowsVersion();
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-        {
-            return GetLinuxVersion();
-        }
-        else
-        {
-            return "Unknown";
+            case var os when os == OSPlatform.OSX:
+                return GetOSXVersion();
+            case var os when os == OSPlatform.Windows:
+                return GetWindowsVersion();
+            case var os when os == OSPlatform.Linux:
+                return GetLinuxVersion();
+            default:
+                return "Unknown";
         }
     }
 

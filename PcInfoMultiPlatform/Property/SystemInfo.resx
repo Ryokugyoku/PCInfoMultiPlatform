@@ -125,4 +125,8 @@
     <value>Unknown</value>
     <comment>識別不明</comment>
   </data>
+  <data name="MacOsCpuCommands" xml:space="preserve">
+    <value>sudo powermetrics --samplers cpu_power -i 1000 -n 1</value>
+    <comment>MacOs CPU情報取得</comment>
+  </data>
 </root>

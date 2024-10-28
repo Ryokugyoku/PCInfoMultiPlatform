@@ -2,7 +2,7 @@ namespace PcInfoMultiPlatform.Tests;
 using System.Runtime.InteropServices;
 using PcInfoMultiPlatform; // 追加
 
-public class OSNameTest
+public class OsInfoTest
 {
     readonly private string _osName;
 
@@ -11,7 +11,7 @@ public class OSNameTest
     /// <summary>
     /// OS名を設定するためのコンストラクタ
     /// </summary>
-    public OSNameTest()
+    public OsInfoTest()
     {
         if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
